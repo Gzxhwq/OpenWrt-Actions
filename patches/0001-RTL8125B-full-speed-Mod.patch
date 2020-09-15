@@ -1,7 +1,7 @@
-From 6671d6695c6326631e00fe77105b3d3331faa3fd Mon Sep 17 00:00:00 2001
+From cbb55ed4bfbd119e19444c87bf71198d224ae5ab Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
 Date: Sun, 13 Sep 2020 06:41:29 +0000
-Subject: [PATCH] RTL8125B full-speed Mod.
+Subject: [PATCH 1/2] RTL8125B full-speed Mod.
 
 ---
  package/lean/r8125/Makefile      |  0
