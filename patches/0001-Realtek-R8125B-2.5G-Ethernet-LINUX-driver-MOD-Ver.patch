@@ -96,7 +96,7 @@ index 5dabc179b..eaa570cc2 100644
  
          if (timer_count == 0 || tp->mcfg == CFG_METHOD_DEFAULT)
                  tp->use_timer_interrrupt = FALSE;
-+	
++
 +//Add by GanFan
 +//	printk ("Timer Count = 0x%x, Timer INR= %d \n",timer_count,tp->use_timer_interrrupt);
  
