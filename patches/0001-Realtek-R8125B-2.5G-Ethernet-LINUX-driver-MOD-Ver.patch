@@ -1,14 +1,33 @@
-From e449bb302b912b856e188a212c321987a67591da Mon Sep 17 00:00:00 2001
+From 62350770b952152559fd99a1b4a160e87ad3a6dc Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
-Date: Tue, 15 Sep 2020 16:18:17 +0000
-Subject: [PATCH 2/2] RTL8125 mod driver v2
+Date: Tue, 15 Sep 2020 23:23:56 +0000
+Subject: [PATCH] Realtek R8125B 2.5G Ethernet LINUX driver - MOD Ver.
 
 ---
- package/lean/r8125/src/r8125_n.c | 33 +++++++++++++++++++++++++++++---
- 1 file changed, 30 insertions(+), 3 deletions(-)
+ package/lean/r8125/src/Makefile  |  6 ++---
+ package/lean/r8125/src/r8125_n.c | 43 +++++++++++++++++++++++++++++---
+ 2 files changed, 42 insertions(+), 7 deletions(-)
 
+diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
+index 02d58004a..fa7bdc043 100644
+--- a/package/lean/r8125/src/Makefile
++++ b/package/lean/r8125/src/Makefile
+@@ -34,10 +34,10 @@ ENABLE_REALWOW_SUPPORT = n
+ ENABLE_DASH_SUPPORT = n
+ ENABLE_DASH_PRINTER_SUPPORT = n
+ CONFIG_DOWN_SPEED_100 = n
+-CONFIG_ASPM = y
+-ENABLE_S5WOL = y
++CONFIG_ASPM = n
++ENABLE_S5WOL = n
+ ENABLE_S5_KEEP_CURR_MAC = n
+-ENABLE_EEE = y
++ENABLE_EEE = n
+ ENABLE_S0_MAGIC_PACKET = n
+ ENABLE_TX_NO_CLOSE = y
+ 
 diff --git a/package/lean/r8125/src/r8125_n.c b/package/lean/r8125/src/r8125_n.c
-index 15c3bce66..eaa570cc2 100644
+index 5dabc179b..eaa570cc2 100644
 --- a/package/lean/r8125/src/r8125_n.c
 +++ b/package/lean/r8125/src/r8125_n.c
 @@ -88,6 +88,7 @@
@@ -47,19 +66,43 @@ index 15c3bce66..eaa570cc2 100644
  module_param(speed_mode, uint, 0);
  MODULE_PARM_DESC(speed_mode, "force phy operation. Deprecated by ethtool (8).");
  
-@@ -8966,9 +8976,9 @@ rtl8125_init_software_variable(struct net_device *dev)
+@@ -4628,6 +4638,9 @@ rtl_ethtool_set_eee(struct net_device *net, struct ethtool_eee *eee)
+                 return -EBUSY;
+         }
+ 
++	//Add by GanFan
++	eee->eee_enabled=0;
++
+         tp->eee_enabled = eee->eee_enabled;
+         tp->eee_adv_t = ethtool_adv_to_mmd_eee_adv_t(eee->advertised);
+ 
+@@ -8715,10 +8728,12 @@ rtl8125_hw_phy_config(struct net_device *dev)
+ 
+         rtl8125_mdio_write(tp, 0x1F, 0x0000);
+ 
++//Add by GanFan
+         if (HW_HAS_WRITE_PHY_MCU_RAM_CODE(tp)) {
+-                if (tp->eee_enabled == 1)
+-                        rtl8125_enable_eee(tp);
+-                else
++//                if (tp->eee_enabled == 1)
++//                        rtl8125_enable_eee(tp);
++//                else
++			tp->eee_enabled=0;
+                         rtl8125_disable_eee(tp);
+         }
+ }
+@@ -8961,6 +8976,9 @@ rtl8125_init_software_variable(struct net_device *dev)
  
          if (timer_count == 0 || tp->mcfg == CFG_METHOD_DEFAULT)
                  tp->use_timer_interrrupt = FALSE;
--
 +	
- //Add by GanFan
--	tp->use_timer_interrrupt = FALSE;
++//Add by GanFan
 +//	printk ("Timer Count = 0x%x, Timer INR= %d \n",timer_count,tp->use_timer_interrrupt);
  
          switch (tp->mcfg) {
          default:
-@@ -10386,6 +10396,7 @@ static const struct net_device_ops rtl8125_netdev_ops = {
+@@ -10378,6 +10396,7 @@ static const struct net_device_ops rtl8125_netdev_ops = {
  };
  #endif
  
@@ -67,7 +110,7 @@ index 15c3bce66..eaa570cc2 100644
  static int __devinit
  rtl8125_init_one(struct pci_dev *pdev,
                   const struct pci_device_id *ent)
-@@ -10479,6 +10490,22 @@ rtl8125_init_one(struct pci_dev *pdev,
+@@ -10471,6 +10490,22 @@ rtl8125_init_one(struct pci_dev *pdev,
  
          spin_lock_init(&tp->lock);
  
