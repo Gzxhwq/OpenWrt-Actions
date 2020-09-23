@@ -1,0 +1,25 @@
+From 476cada43c207c5217936a93e874d84d7c321134 Mon Sep 17 00:00:00 2001
+From: Gzxhwq <gzxhwq@gmail.com>
+Date: Wed, 23 Sep 2020 13:21:59 +0000
+Subject: [PATCH 3/3] fix typo
+
+---
+ package/lean/r8125/src/r8125_n.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/lean/r8125/src/r8125_n.c b/package/lean/r8125/src/r8125_n.c
+index eaa570cc2..002566198 100644
+--- a/package/lean/r8125/src/r8125_n.c
++++ b/package/lean/r8125/src/r8125_n.c
+@@ -8976,7 +8976,7 @@ rtl8125_init_software_variable(struct net_device *dev)
+ 
+         if (timer_count == 0 || tp->mcfg == CFG_METHOD_DEFAULT)
+                 tp->use_timer_interrrupt = FALSE;
+-	
++
+ //Add by GanFan
+ //	printk ("Timer Count = 0x%x, Timer INR= %d \n",timer_count,tp->use_timer_interrrupt);
+ 
+-- 
+2.20.1
+
