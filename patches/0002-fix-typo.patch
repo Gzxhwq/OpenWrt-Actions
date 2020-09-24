@@ -1,7 +1,7 @@
-From 476cada43c207c5217936a93e874d84d7c321134 Mon Sep 17 00:00:00 2001
+From 39b8d299a17cc6a52240b69d274dfc64903a2b24 Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
 Date: Wed, 23 Sep 2020 13:21:59 +0000
-Subject: [PATCH 3/3] fix typo
+Subject: [PATCH 2/2] fix typo
 
 ---
  package/lean/r8125/src/r8125_n.c | 2 +-
