@@ -1,7 +1,7 @@
-From 9137f300b2ca597d080db3fd93fee0d6d71f9641 Mon Sep 17 00:00:00 2001
+From a9af4ba124dcb8274010ae4bc78fe6372f507359 Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
-Date: Sun, 27 Sep 2020 15:37:40 +0000
-Subject: [PATCH] Realtek R8125B 2.5G Ethernet LINUX driver - MOD Ver.
+Date: Sun, 27 Sep 2020 15:50:29 +0000
+Subject: [PATCH] Realtek R8125B 2.5G Ethernet LINUX driver - MOD Ver
 
 ---
  package/lean/r8125/src/Makefile  |  6 ++---
