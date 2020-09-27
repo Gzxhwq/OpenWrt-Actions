@@ -1,7 +1,7 @@
-From af1578b9580b23d88ff28827a9421f986ceb376b Mon Sep 17 00:00:00 2001
+From 9137f300b2ca597d080db3fd93fee0d6d71f9641 Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
-Date: Tue, 15 Sep 2020 23:23:56 +0000
-Subject: [PATCH 1/2] Realtek R8125B 2.5G Ethernet LINUX driver - MOD Ver.
+Date: Sun, 27 Sep 2020 15:37:40 +0000
+Subject: [PATCH] Realtek R8125B 2.5G Ethernet LINUX driver - MOD Ver.
 
 ---
  package/lean/r8125/src/Makefile  |  6 ++---
@@ -27,7 +27,7 @@ index 02d58004a..fa7bdc043 100644
  ENABLE_TX_NO_CLOSE = y
  
 diff --git a/package/lean/r8125/src/r8125_n.c b/package/lean/r8125/src/r8125_n.c
-index 5dabc179b..eaa570cc2 100644
+index 5dabc179b..002566198 100644
 --- a/package/lean/r8125/src/r8125_n.c
 +++ b/package/lean/r8125/src/r8125_n.c
 @@ -88,6 +88,7 @@
@@ -92,16 +92,16 @@ index 5dabc179b..eaa570cc2 100644
                          rtl8125_disable_eee(tp);
          }
  }
-@@ -8961,6 +8976,9 @@ rtl8125_init_software_variable(struct net_device *dev)
- 
+@@ -8962,6 +8977,9 @@ rtl8125_init_software_variable(struct net_device *dev)
          if (timer_count == 0 || tp->mcfg == CFG_METHOD_DEFAULT)
                  tp->use_timer_interrrupt = FALSE;
-+
+ 
 +//Add by GanFan
 +//	printk ("Timer Count = 0x%x, Timer INR= %d \n",timer_count,tp->use_timer_interrrupt);
- 
++
          switch (tp->mcfg) {
          default:
+                 tp->SwPaddingShortPktLen = ETH_ZLEN;
 @@ -10378,6 +10396,7 @@ static const struct net_device_ops rtl8125_netdev_ops = {
  };
  #endif
