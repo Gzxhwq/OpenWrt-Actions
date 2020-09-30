@@ -21,4 +21,4 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 git submodule add https://github.com/vernesong/OpenClash.git package/external-packages/OpenClash
 git submodule add https://github.com/destan19/OpenAppFilter.git package/external-packages/OpenAppFilter
 git submodule add https://github.com/rufengsuixing/luci-app-adguardhome.git package/external-packages/luci-app-adguardhome
-
+git submodule add https://github.com/tty228/luci-app-serverchan.git package/external-packages/luci-app-serverchan
