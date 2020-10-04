@@ -22,3 +22,5 @@ git submodule add https://github.com/vernesong/OpenClash.git package/external-pa
 git submodule add https://github.com/destan19/OpenAppFilter.git package/external-packages/OpenAppFilter
 git submodule add https://github.com/rufengsuixing/luci-app-adguardhome.git package/external-packages/luci-app-adguardhome
 git submodule add https://github.com/tty228/luci-app-serverchan.git package/external-packages/luci-app-serverchan
+git submodule add -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/external-packages/luci-theme-edge
+git submodule add https://github.com/garypang13/luci-app-eqos.git package/external-packages/luci-app-eqos
