@@ -25,7 +25,3 @@ git submodule add https://github.com/tty228/luci-app-serverchan.git package/exte
 git submodule add -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/external-packages/luci-theme-edge
 git submodule add https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/external-packages/luci-theme-infinityfreedom
 git submodule add https://github.com/garypang13/luci-app-eqos.git package/external-packages/luci-app-eqos
-
-# Remove some lean's packages
-rm -r package/lean/v2ray
-rm -r package/lean/v2ray-plugin
