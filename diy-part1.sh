@@ -15,13 +15,13 @@ sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+cd package/lean/
+rm -rf luci-theme-argon
+cd ../..
 sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
-
-#Add external packages
+sed -i '$a src-git ctr54188 https://github.com/ctr54188/openwrt-packages' feeds.conf.default
+sed -i 's/192.168.1.1/192.168.1.8/g' package/base-files/files/bin/config_generate
+sed -i '$a src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' feeds.conf.default
 git submodule add https://github.com/vernesong/OpenClash.git package/external-packages/OpenClash
-git submodule add https://github.com/destan19/OpenAppFilter.git package/external-packages/OpenAppFilter
 git submodule add https://github.com/rufengsuixing/luci-app-adguardhome.git package/external-packages/luci-app-adguardhome
 git submodule add https://github.com/tty228/luci-app-serverchan.git package/external-packages/luci-app-serverchan
-git submodule add -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/external-packages/luci-theme-edge
-git submodule add https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/external-packages/luci-theme-infinityfreedom
-git submodule add https://github.com/garypang13/luci-app-eqos.git package/external-packages/luci-app-eqos
