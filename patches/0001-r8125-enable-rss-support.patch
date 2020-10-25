@@ -1,24 +1,21 @@
-From 3ed4fd5d7745bfe0b3bfc58264c6c20a5b07093e Mon Sep 17 00:00:00 2001
+From a52828aefec5ba489eb4b4f7f853eef96ac54d19 Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
-Date: Fri, 23 Oct 2020 15:12:34 +0000
-Subject: [PATCH] r8125: enable multiple tx queue & rss support
+Date: Sun, 25 Oct 2020 11:01:45 +0000
+Subject: [PATCH] r8125: enable rss support
 
 ---
- package/lean/r8125/src/Makefile    |   4 +-
+ package/lean/r8125/src/Makefile    |   2 +-
  package/lean/r8125/src/r8125_rss.c | 484 +++++++++++++++++++++++++++++
- 2 files changed, 486 insertions(+), 2 deletions(-)
+ 2 files changed, 485 insertions(+), 1 deletion(-)
  create mode 100644 package/lean/r8125/src/r8125_rss.c
 
 diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
-index fe59ca609..5c0126e28 100755
+index fe59ca609..3b1565d68 100755
 --- a/package/lean/r8125/src/Makefile
 +++ b/package/lean/r8125/src/Makefile
-@@ -41,9 +41,9 @@ ENABLE_S5_KEEP_CURR_MAC = n
- ENABLE_EEE = y
- ENABLE_S0_MAGIC_PACKET = n
+@@ -43,7 +43,7 @@ ENABLE_S0_MAGIC_PACKET = n
  ENABLE_TX_NO_CLOSE = y
--ENABLE_MULTIPLE_TX_QUEUE = n
-+ENABLE_MULTIPLE_TX_QUEUE = y
+ ENABLE_MULTIPLE_TX_QUEUE = n
  ENABLE_PTP_SUPPORT = n
 -ENABLE_RSS_SUPPORT = n
 +ENABLE_RSS_SUPPORT = y
