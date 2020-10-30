@@ -20,7 +20,6 @@ rm -rf luci-theme-argon
 cd ../..
 sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 sed -i '$a src-git ctr54188 https://github.com/ctr54188/openwrt-packages' feeds.conf.default
-sed -i 's/192.168.1.1/192.168.1.8/g' package/base-files/files/bin/config_generate
 sed -i '$a src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' feeds.conf.default
 git submodule add https://github.com/vernesong/OpenClash.git package/external-packages/OpenClash
 git submodule add https://github.com/rufengsuixing/luci-app-adguardhome.git package/external-packages/luci-app-adguardhome
