@@ -1,0 +1,27 @@
+From 5e9b8383d24550c3d3047a5430cd6aa805c82167 Mon Sep 17 00:00:00 2001
+From: Gzxhwq <gzxhwq@gmail.com>
+Date: Sat, 31 Oct 2020 15:32:58 +0000
+Subject: [PATCH 3/3] r8125: set timer count
+
+---
+ package/lean/r8125/src/r8125_n.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/package/lean/r8125/src/r8125_n.c b/package/lean/r8125/src/r8125_n.c
+index 8d955fde8..39364e8e9 100755
+--- a/package/lean/r8125/src/r8125_n.c
++++ b/package/lean/r8125/src/r8125_n.c
+@@ -153,8 +153,8 @@ MODULE_DEVICE_TABLE(pci, rtl8125_pci_tbl);
+ 
+ static int rx_copybreak = 0;
+ static int use_dac = 1;
+-static int timer_count = 0x2600;
+-static int timer_count_v2 = (0x2600 / 0x100);
++static int timer_count = 0x0700;
++static int timer_count_v2 = (0x0700 / 0x100);
+ 
+ static struct {
+         u32 msg_enable;
+-- 
+2.20.1
+
