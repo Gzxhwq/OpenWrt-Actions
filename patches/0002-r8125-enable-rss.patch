@@ -1,0 +1,25 @@
+From 1a0802d8c64f73fb6ae53c8d00ab2c1b1ad5b622 Mon Sep 17 00:00:00 2001
+From: Gzxhwq <gzxhwq@gmail.com>
+Date: Thu, 4 Feb 2021 09:12:52 +0800
+Subject: [PATCH 2/2] r8125: enable rss
+
+---
+ package/lean/r8125/src/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
+index f49c90676..067419095 100755
+--- a/package/lean/r8125/src/Makefile
++++ b/package/lean/r8125/src/Makefile
+@@ -44,7 +44,7 @@ ENABLE_TX_NO_CLOSE = y
+ ENABLE_MULTIPLE_TX_QUEUE = n
+ ENABLE_PTP_SUPPORT = n
+ ENABLE_PTP_MASTER_MODE = n
+-ENABLE_RSS_SUPPORT = n
++ENABLE_RSS_SUPPORT = y
+ ENABLE_LIB_SUPPORT = n
+ 
+ ifneq ($(KERNELRELEASE),)
+-- 
+2.20.1
+
