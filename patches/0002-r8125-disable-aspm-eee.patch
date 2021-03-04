@@ -1,6 +1,6 @@
-From 8e6b9064e865bd669ccbc33606e8fa29c0001bb0 Mon Sep 17 00:00:00 2001
+From 2ccaacb2edee38a4a1ba6029439dcb51039b8541 Mon Sep 17 00:00:00 2001
 From: root <root@Debian.gzxhwq.eu.org>
-Date: Sun, 21 Feb 2021 11:42:06 +0000
+Date: Thu, 4 Mar 2021 12:30:58 +0000
 Subject: [PATCH 2/2] r8125: disable aspm & eee
 
 ---
