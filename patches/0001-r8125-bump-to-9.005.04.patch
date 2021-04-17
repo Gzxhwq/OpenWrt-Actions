@@ -1,18 +1,32 @@
-From 492c44f24ff7b57264724a9637fa74aae829c041 Mon Sep 17 00:00:00 2001
+From b2f732dfee960d68b9c265802d1314df6df7285e Mon Sep 17 00:00:00 2001
 From: root <root@Debian.gzxhwq.eu.org>
-Date: Sat, 17 Apr 2021 09:08:14 +0800
+Date: Sat, 17 Apr 2021 22:17:30 +0800
 Subject: [PATCH] r8125: bump to 9.005.04
 
 ---
+ package/lean/r8125/Makefile        |   2 +-
  package/lean/r8125/src/Makefile    |   2 +-
  package/lean/r8125/src/r8125.h     |  25 +-
  package/lean/r8125/src/r8125_lib.c | 661 ++++++++++++++++++++
  package/lean/r8125/src/r8125_lib.h | 204 +++++++
  package/lean/r8125/src/r8125_n.c   | 944 +++++++++++++++++------------
- 5 files changed, 1436 insertions(+), 400 deletions(-)
+ 6 files changed, 1437 insertions(+), 401 deletions(-)
  create mode 100644 package/lean/r8125/src/r8125_lib.c
  create mode 100644 package/lean/r8125/src/r8125_lib.h
 
+diff --git a/package/lean/r8125/Makefile b/package/lean/r8125/Makefile
+index 3e4f3af4c..207476e42 100755
+--- a/package/lean/r8125/Makefile
++++ b/package/lean/r8125/Makefile
+@@ -65,7 +65,7 @@ include $(TOPDIR)/rules.mk
+ include $(INCLUDE_DIR)/kernel.mk
+ 
+ PKG_NAME:=r8125
+-PKG_VERSION:=9.005.01
++PKG_VERSION:=9.005.04
+ PKG_RELEASE:=1
+ 
+ #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
 index 067419095..e73b1a8bb 100755
 --- a/package/lean/r8125/src/Makefile
