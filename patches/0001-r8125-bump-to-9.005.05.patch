@@ -1,6 +1,6 @@
-From 03683b1798a995f963debe8cce1d75f534449441 Mon Sep 17 00:00:00 2001
+From 444a3a100e4dfdc4bb835f19902cced65fcf0262 Mon Sep 17 00:00:00 2001
 From: root <root@Debian.gzxhwq.eu.org>
-Date: Tue, 11 May 2021 13:41:48 +0800
+Date: Tue, 11 May 2021 23:36:32 +0800
 Subject: [PATCH] r8125: bump to 9.005.05
 
 ---
@@ -19,10 +19,10 @@ Subject: [PATCH] r8125: bump to 9.005.05
  create mode 100644 package/lean/r8125/src/r8125_lib.h
 
 diff --git a/package/lean/r8125/Makefile b/package/lean/r8125/Makefile
-index add8a25df8..e1d2c46950 100644
+index 3e4f3af4c..0745f64de 100755
 --- a/package/lean/r8125/Makefile
 +++ b/package/lean/r8125/Makefile
-@@ -7,7 +7,7 @@ include $(TOPDIR)/rules.mk
+@@ -65,7 +65,7 @@ include $(TOPDIR)/rules.mk
  include $(INCLUDE_DIR)/kernel.mk
  
  PKG_NAME:=r8125
@@ -30,9 +30,9 @@ index add8a25df8..e1d2c46950 100644
 +PKG_VERSION:=9.005.05
  PKG_RELEASE:=1
  
- PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+ #PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
-index 0674190954..fdcf13dd15 100644
+index 067419095..fdcf13dd1 100755
 --- a/package/lean/r8125/src/Makefile
 +++ b/package/lean/r8125/src/Makefile
 @@ -45,7 +45,8 @@ ENABLE_MULTIPLE_TX_QUEUE = n
@@ -57,7 +57,7 @@ index 0674190954..fdcf13dd15 100644
  	BASEDIR := /lib/modules/$(shell uname -r)
  	KERNELDIR ?= $(BASEDIR)/build
 diff --git a/package/lean/r8125/src/r8125.h b/package/lean/r8125/src/r8125.h
-index 06893797b7..3b2cd85fcb 100644
+index 06893797b..3b2cd85fc 100755
 --- a/package/lean/r8125/src/r8125.h
 +++ b/package/lean/r8125/src/r8125.h
 @@ -47,9 +47,15 @@
@@ -217,7 +217,7 @@ index 06893797b7..3b2cd85fcb 100644
  #endif
 diff --git a/package/lean/r8125/src/r8125_firmware.c b/package/lean/r8125/src/r8125_firmware.c
 new file mode 100644
-index 0000000000..b9a9db5fe2
+index 000000000..b9a9db5fe
 --- /dev/null
 +++ b/package/lean/r8125/src/r8125_firmware.c
 @@ -0,0 +1,260 @@
@@ -483,7 +483,7 @@ index 0000000000..b9a9db5fe2
 +}
 diff --git a/package/lean/r8125/src/r8125_firmware.h b/package/lean/r8125/src/r8125_firmware.h
 new file mode 100644
-index 0000000000..cd4de3e963
+index 000000000..cd4de3e96
 --- /dev/null
 +++ b/package/lean/r8125/src/r8125_firmware.h
 @@ -0,0 +1,92 @@
@@ -581,7 +581,7 @@ index 0000000000..cd4de3e963
 +#endif /* _LINUX_rtl8125_FIRMWARE_H */
 diff --git a/package/lean/r8125/src/r8125_lib.c b/package/lean/r8125/src/r8125_lib.c
 new file mode 100644
-index 0000000000..93284faffb
+index 000000000..93284faff
 --- /dev/null
 +++ b/package/lean/r8125/src/r8125_lib.c
 @@ -0,0 +1,688 @@
@@ -1275,7 +1275,7 @@ index 0000000000..93284faffb
 +EXPORT_SYMBOL(rtl8125_lib_reset_complete);
 diff --git a/package/lean/r8125/src/r8125_lib.h b/package/lean/r8125/src/r8125_lib.h
 new file mode 100644
-index 0000000000..61fbb0128a
+index 000000000..61fbb0128
 --- /dev/null
 +++ b/package/lean/r8125/src/r8125_lib.h
 @@ -0,0 +1,204 @@
@@ -1484,7 +1484,7 @@ index 0000000000..61fbb0128a
 +
 +#endif /* _LINUX_rtl8125_LIB_H */
 diff --git a/package/lean/r8125/src/r8125_n.c b/package/lean/r8125/src/r8125_n.c
-index 608d8c2ee5..7d843b7d7d 100644
+index 608d8c2ee..7d843b7d7 100755
 --- a/package/lean/r8125/src/r8125_n.c
 +++ b/package/lean/r8125/src/r8125_n.c
 @@ -83,17 +83,33 @@
