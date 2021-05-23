@@ -12,7 +12,6 @@ name: Build OpenWrt RPi4B
 
 on:
   repository_dispatch:
-
   workflow_dispatch:
     inputs:
       ssh:

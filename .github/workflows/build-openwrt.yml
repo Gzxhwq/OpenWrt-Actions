@@ -12,7 +12,6 @@ name: Build OpenWrt x86_64
 
 on:
   repository_dispatch:
-
   workflow_dispatch:
     inputs:
       ssh:
