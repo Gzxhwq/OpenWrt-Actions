@@ -25,3 +25,13 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 
 #Fix qemu-ga shutdown issue
 cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
+
+# Update mwan3helper's IP pools
+wget https://ispip.clang.cn/all_cn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
+wget https://ispip.clang.cn/chinatelecom_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/chinatelecom.txt
+wget https://ispip.clang.cn/unicom_cnc_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/unicom_cnc.txt
+wget https://ispip.clang.cn/cmcc_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/cmcc.txt
+wget https://ispip.clang.cn/crtc_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/crtc.txt
+wget https://ispip.clang.cn/cernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/cernet.txt
+wget https://ispip.clang.cn/gwbn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/gwbn.txt
+wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
