@@ -19,6 +19,9 @@ sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_genera
 #Apply the patches
 git apply $GITHUB_WORKSPACE/patches/*.patch
 
-cd ./feeds/packages/
-git apply $GITHUB_WORKSPACE/feeds-patches/*.patch
-cd ../../
+#cd ./feeds/packages/
+#git apply $GITHUB_WORKSPACE/feeds-patches/*.patch
+#cd ../../
+
+#Fix qemu-ga shutdown issue
+cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
