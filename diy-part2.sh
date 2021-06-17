@@ -24,7 +24,7 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 #cd ../../
 
 #Fix qemu-ga shutdown issue
-cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
+#cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
 
 # Update mwan3helper's IP pools
 wget https://ispip.clang.cn/all_cn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
