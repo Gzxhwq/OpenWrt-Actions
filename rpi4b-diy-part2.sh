@@ -24,4 +24,4 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 #cd ../../
 
 #Fix qemu-ga shutdown issue
-cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
+#cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
