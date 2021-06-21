@@ -33,3 +33,8 @@ wget https://ispip.clang.cn/crtc_cidr.txt -O package/lean/luci-app-mwan3helper/r
 wget https://ispip.clang.cn/cernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/cernet.txt
 wget https://ispip.clang.cn/gwbn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/gwbn.txt
 wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
+
+# For test purpose
+sed -i 's/5.4/5.10/g' target/linux/bcm27xx/Makefile
+
+
