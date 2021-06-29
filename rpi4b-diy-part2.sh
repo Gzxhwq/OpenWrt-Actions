@@ -19,12 +19,10 @@ sed -i 's/192.168.1.1/10.10.10.200/g' package/base-files/files/bin/config_genera
 #Apply the patches
 git apply $GITHUB_WORKSPACE/patches/*.patch
 
+#Fix qemu-ga shutdown issue
 #cd ./feeds/packages/
 #git apply $GITHUB_WORKSPACE/feeds-patches/*.patch
 #cd ../../
-
-#Fix qemu-ga shutdown issue
-#cp ./feeds/packages/utils/open-vm-tools/files/shutdown ./feeds/packages/utils/qemu/files/
 
 # Update mwan3helper's IP pools
 wget https://ispip.clang.cn/all_cn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
@@ -35,3 +33,6 @@ wget https://ispip.clang.cn/crtc_cidr.txt -O package/lean/luci-app-mwan3helper/r
 wget https://ispip.clang.cn/cernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/cernet.txt
 wget https://ispip.clang.cn/gwbn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/gwbn.txt
 wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
+
+# Change dnsproxy behave
+sed -i 's/--all-servers/--fastest-addr/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc

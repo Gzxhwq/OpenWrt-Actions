@@ -33,3 +33,6 @@ wget https://ispip.clang.cn/crtc_cidr.txt -O package/lean/luci-app-mwan3helper/r
 wget https://ispip.clang.cn/cernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/cernet.txt
 wget https://ispip.clang.cn/gwbn_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/gwbn.txt
 wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
+
+# Change dnsproxy behave
+sed -i 's/--all-servers/--fastest-addr/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
