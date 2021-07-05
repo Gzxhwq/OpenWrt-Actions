@@ -35,4 +35,4 @@ wget https://ispip.clang.cn/gwbn_cidr.txt -O package/lean/luci-app-mwan3helper/r
 wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
 
 # Change dnsproxy behave
-sed -i 's/--all-servers/--fastest-addr/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+sed -i 's/--all-servers --cache --cache-min-ttl=3600/--fastest-addr --cache --cache-min-ttl=600/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
