@@ -15,7 +15,7 @@
 
 # Add a feed source
 sed -i '$a src-git ssrp https://github.com/fw876/helloworld' feeds.conf.default
-#sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 
 #Add external packages
