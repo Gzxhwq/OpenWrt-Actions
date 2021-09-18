@@ -130,7 +130,7 @@ jobs:
         echo "::set-output name=status::success"
 
     - name: Package Armvirt as OpenWrt
-      uses: Gzxhwq/openwrt_packit@fix510action
+      uses: unifreq/openwrt_packit@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
