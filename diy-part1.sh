@@ -19,11 +19,12 @@ sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds
 sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 
 #Add external packages
-#svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/external-packages/luci-app-openclash
-#git submodule add https://github.com/destan19/OpenAppFilter.git package/external-packages/OpenAppFilter
-#git submodule add https://github.com/tty228/luci-app-serverchan.git package/external-packages/luci-app-serverchan
-#git submodule add -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/external-packages/luci-theme-edge
-#git submodule add https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/external-packages/luci-theme-infinityfreedom
-#git submodule add https://github.com/garypang13/luci-app-eqos.git package/external-packages/luci-app-eqos
-#git submodule add https://github.com/lisaac/luci-app-dockerman.git package/external-packages/luci-app-dockerman
- 
+#svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/others/luci-app-openclash
+#git submodule add https://github.com/destan19/OpenAppFilter.git package/others/OpenAppFilter
+#git submodule add https://github.com/tty228/luci-app-serverchan.git package/others/luci-app-serverchan
+#git submodule add -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/others/luci-theme-edge
+#git submodule add https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/others/luci-theme-infinityfreedom
+#git submodule add https://github.com/garypang13/luci-app-eqos.git package/others/luci-app-eqos
+#git submodule add https://github.com/lisaac/luci-app-dockerman.git package/others/luci-app-dockerman
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
+
