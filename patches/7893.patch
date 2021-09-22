@@ -1,0 +1,160 @@
+From a3686d1b7f75c1208a34bbfaf8afd0d096daacf2 Mon Sep 17 00:00:00 2001
+From: Ailick <277498654@qq.com>
+Date: Mon, 20 Sep 2021 09:49:25 +0800
+Subject: [PATCH 1/2] (TEST) fix the issue of shortcut-fe-cm premature loading
+
+---
+ package/lean/shortcut-fe/shortcut-fe/Makefile                   | 1 +
+ .../lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe   | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/package/lean/shortcut-fe/shortcut-fe/Makefile b/package/lean/shortcut-fe/shortcut-fe/Makefile
+index 6a2ca6a54270..f326e59c9cdf 100644
+--- a/package/lean/shortcut-fe/shortcut-fe/Makefile
++++ b/package/lean/shortcut-fe/shortcut-fe/Makefile
+@@ -31,6 +31,7 @@ define KernelPackage/shortcut-fe
+ 	   CONFIG_SHORTCUT_FE=y \
+ 	   CONFIG_XFRM=y
+   PROVIDES:=$(PKG_NAME)
++  AUTOLOAD:=$(call AutoLoad,09,shortcut-fe shortcut-fe-ipv6)
+ endef
+ 
+ define KernelPackage/shortcut-fe/Description
+diff --git a/package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe b/package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
+index 0eccdbf84c67..88c381ade07a 100755
+--- a/package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
++++ b/package/lean/shortcut-fe/shortcut-fe/files/etc/init.d/shortcut-fe
+@@ -15,7 +15,7 @@
+ 
+ #SFE connection manager has a lower priority, it should be started after other connection manager
+ #to detect the existence of connection manager with higher priority
+-START=72
++START=99
+ 
+ have_cm() {
+ 	[ -d "/sys/kernel/debug/ecm" ] && echo 1 && return
+
+From 0b9af5544550fd6d91e6a173336945e5e36942ba Mon Sep 17 00:00:00 2001
+From: Ailick <277498654@qq.com>
+Date: Wed, 22 Sep 2021 19:32:19 +0800
+Subject: [PATCH 2/2] shortcut-fe: bug fixes: a problem of lookup routes when
+ skb provided.
+
+---
+ .../lean/shortcut-fe/shortcut-fe/src/sfe_cm.c | 37 ++++++++++++++-----
+ 1 file changed, 27 insertions(+), 10 deletions(-)
+
+diff --git a/package/lean/shortcut-fe/shortcut-fe/src/sfe_cm.c b/package/lean/shortcut-fe/shortcut-fe/src/sfe_cm.c
+index 35a32b4cf9be..cf146fdb1143 100644
+--- a/package/lean/shortcut-fe/shortcut-fe/src/sfe_cm.c
++++ b/package/lean/shortcut-fe/shortcut-fe/src/sfe_cm.c
+@@ -199,7 +199,7 @@ int sfe_cm_recv(struct sk_buff *skb)
+  * structure, obtain the hardware address.  This means this function also
+  * works if the neighbours are routers too.
+  */
+-static bool sfe_cm_find_dev_and_mac_addr(sfe_ip_addr_t *addr, struct net_device **dev, u8 *mac_addr, int is_v4)
++static bool sfe_cm_find_dev_and_mac_addr(struct sk_buff *skb, sfe_ip_addr_t *addr, struct net_device **dev, u8 *mac_addr, int is_v4)
+ {
+ 	struct neighbour *neigh;
+ 	struct rtable *rt;
+@@ -207,6 +207,15 @@ static bool sfe_cm_find_dev_and_mac_addr(sfe_ip_addr_t *addr, struct net_device
+ 	struct dst_entry *dst;
+ 	struct net_device *mac_dev;
+ 
++	/*
++	 * If we have skb provided, use it as the original code is unable
++	 * to lookup routes that are policy routed.
++	*/
++	if (unlikely(skb)) {
++		dst = skb_dst(skb);
++		goto skip_dst_lookup;
++	}
++
+ 	/*
+ 	 * Look up the rtable entry for the IP address then get the hardware
+ 	 * address from its neighbour structure.  This means this work when the
+@@ -232,18 +241,21 @@ static bool sfe_cm_find_dev_and_mac_addr(sfe_ip_addr_t *addr, struct net_device
+ 		dst = (struct dst_entry *)rt6;
+ 	}
+ 
++skip_dst_lookup:
+ 	rcu_read_lock();
+ 	neigh = sfe_dst_get_neighbour(dst, addr);
+ 	if (unlikely(!neigh)) {
+ 		rcu_read_unlock();
+-		dst_release(dst);
++		if (likely(!skb))
++			dst_release(dst);
+ 		goto ret_fail;
+ 	}
+ 
+ 	if (unlikely(!(neigh->nud_state & NUD_VALID))) {
+ 		rcu_read_unlock();
+ 		neigh_release(neigh);
+-		dst_release(dst);
++		if (likely(!skb))
++			dst_release(dst);
+ 		goto ret_fail;
+ 	}
+ 
+@@ -251,7 +263,8 @@ static bool sfe_cm_find_dev_and_mac_addr(sfe_ip_addr_t *addr, struct net_device
+ 	if (!mac_dev) {
+ 		rcu_read_unlock();
+ 		neigh_release(neigh);
+-		dst_release(dst);
++		if (likely(!skb))
++			dst_release(dst);
+ 		goto ret_fail;
+ 	}
+ 
+@@ -261,7 +274,8 @@ static bool sfe_cm_find_dev_and_mac_addr(sfe_ip_addr_t *addr, struct net_device
+ 	*dev = mac_dev;
+ 	rcu_read_unlock();
+ 	neigh_release(neigh);
+-	dst_release(dst);
++	if (likely(!skb))
++		dst_release(dst);
+ 
+ 	return true;
+ 
+@@ -291,6 +305,7 @@ static unsigned int sfe_cm_post_routing(struct sk_buff *skb, int is_v4)
+ 	struct net_device *dest_dev;
+ 	struct net_device *src_dev_tmp;
+ 	struct net_device *dest_dev_tmp;
++	struct sk_buff *tmp_skb = NULL;
+ 	struct net_device *src_br_dev = NULL;
+ 	struct net_device *dest_br_dev = NULL;
+ 	struct nf_conntrack_tuple orig_tuple;
+@@ -581,25 +596,27 @@ static unsigned int sfe_cm_post_routing(struct sk_buff *skb, int is_v4)
+ 	 * Get the net device and MAC addresses that correspond to the various source and
+ 	 * destination host addresses.
+ 	 */
+-	if (!sfe_cm_find_dev_and_mac_addr(&sic.src_ip, &src_dev_tmp, sic.src_mac, is_v4)) {
++	if (!sfe_cm_find_dev_and_mac_addr(NULL, &sic.src_ip, &src_dev_tmp, sic.src_mac, is_v4)) {
+ 		sfe_cm_incr_exceptions(SFE_CM_EXCEPTION_NO_SRC_DEV);
+ 		return NF_ACCEPT;
+ 	}
+ 	src_dev = src_dev_tmp;
+ 
+-	if (!sfe_cm_find_dev_and_mac_addr(&sic.src_ip_xlate, &dev, sic.src_mac_xlate, is_v4)) {
++	if (!sfe_cm_find_dev_and_mac_addr(NULL, &sic.src_ip_xlate, &dev, sic.src_mac_xlate, is_v4)) {
+ 		sfe_cm_incr_exceptions(SFE_CM_EXCEPTION_NO_SRC_XLATE_DEV);
+ 		goto done1;
+ 	}
+ 	dev_put(dev);
+-
+-	if (!sfe_cm_find_dev_and_mac_addr(&sic.dest_ip, &dev, sic.dest_mac, is_v4)) {
++	/* Somehow, for IPv6, we need this workaround as well */
++	if (unlikely(!is_v4))
++		tmp_skb = skb;
++	if (!sfe_cm_find_dev_and_mac_addr(tmp_skb, &sic.dest_ip, &dev, sic.dest_mac, is_v4)) {
+ 		sfe_cm_incr_exceptions(SFE_CM_EXCEPTION_NO_DEST_DEV);
+ 		goto done1;
+ 	}
+ 	dev_put(dev);
+ 
+-	if (!sfe_cm_find_dev_and_mac_addr(&sic.dest_ip_xlate, &dest_dev_tmp, sic.dest_mac_xlate, is_v4)) {
++	if (!sfe_cm_find_dev_and_mac_addr(skb, &sic.dest_ip_xlate, &dest_dev_tmp, sic.dest_mac_xlate, is_v4)) {
+ 		sfe_cm_incr_exceptions(SFE_CM_EXCEPTION_NO_DEST_XLATE_DEV);
+ 		goto done1;
+ 	}
