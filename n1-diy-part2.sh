@@ -43,3 +43,13 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 
 # Change dnsproxy behave
 sed -i 's/--cache --cache-min-ttl=3600/--cache --cache-min-ttl=600/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+
+
+# 1.Set the download repository of the OpenWrt files to your github.com
+sed -i "s|https.*/OpenWrt|https://github.com/Gzxhwq/OpenWrt-Actions|g" package/others/luci-app-amlogic/root/etc/config/amlogic
+# 2.Set the keywords of Tags in your github.com Releases
+sed -i "s|ARMv8|Phicomm_N1|g" package/others/luci-app-amlogic/root/etc/config/amlogic
+# 3.Set the suffix of the OPENWRT files in your github.com Releases
+#sed -i "s|.img.gz|.OPENWRT_SUFFIX|g" package/others/luci-app-amlogic/root/etc/config/amlogic
+# 4.Set the download path of the kernel in your github.com repository
+sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g" package/others/luci-app-amlogic/root/etc/config/amlogic
