@@ -193,6 +193,7 @@ jobs:
       with:
         name: R${{ env.DATE }} for ${{ env.FILE_NAME }}
         allowUpdates: true
+        removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
         commit: main
         token: ${{ secrets.GITHUB_TOKEN }}
