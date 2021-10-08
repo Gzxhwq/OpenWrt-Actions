@@ -1,17 +1,17 @@
-From cee6ff46378013ac2da9c0885a5d68f921e307d6 Mon Sep 17 00:00:00 2001
+From 52f5a511d536deaa96c6f1695f44025cdc8887ba Mon Sep 17 00:00:00 2001
 From: Gzxhwq <gzxhwq@gmail.com>
-Date: Thu, 7 Oct 2021 22:32:00 +0800
+Date: Fri, 8 Oct 2021 14:58:06 +0800
 Subject: [PATCH] r8125: bump to 9.006.04
 
 ---
  package/lean/r8125/Makefile        |    2 +-
- package/lean/r8125/src/Makefile    |   10 +-
+ package/lean/r8125/src/Makefile    |    8 +
  package/lean/r8125/src/r8125.h     |  251 ++++-
  package/lean/r8125/src/r8125_n.c   | 1398 ++++++++++++++++------------
  package/lean/r8125/src/r8125_rss.c |    3 -
  package/lean/r8125/src/r8125_rss.h |    3 +
  package/lean/r8125/src/rtltool.c   |   39 -
- 7 files changed, 1070 insertions(+), 636 deletions(-)
+ 7 files changed, 1069 insertions(+), 635 deletions(-)
 
 diff --git a/package/lean/r8125/Makefile b/package/lean/r8125/Makefile
 index 5d5a1cd31..9768f930c 100644
@@ -27,17 +27,10 @@ index 5d5a1cd31..9768f930c 100644
  
  PKG_BUILD_DIR:=$(KERNEL_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 diff --git a/package/lean/r8125/src/Makefile b/package/lean/r8125/src/Makefile
-index 3c57e3b0b..e79b0cc87 100644
+index 3c57e3b0b..514c0acdd 100644
 --- a/package/lean/r8125/src/Makefile
 +++ b/package/lean/r8125/src/Makefile
-@@ -41,12 +41,14 @@ ENABLE_S5_KEEP_CURR_MAC = n
- ENABLE_EEE = y
- ENABLE_S0_MAGIC_PACKET = n
- ENABLE_TX_NO_CLOSE = y
--ENABLE_MULTIPLE_TX_QUEUE = n
-+ENABLE_MULTIPLE_TX_QUEUE = y
- ENABLE_PTP_SUPPORT = n
- ENABLE_PTP_MASTER_MODE = n
+@@ -47,6 +47,8 @@ ENABLE_PTP_MASTER_MODE = n
  ENABLE_RSS_SUPPORT = y
  ENABLE_LIB_SUPPORT = n
  ENABLE_USE_FIRMWARE_FILE = n
