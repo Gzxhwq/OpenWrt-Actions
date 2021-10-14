@@ -1,8 +1,8 @@
 diff --git a/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper b/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
-index 6247ec230..d031d3f29 100755
+index 6247ec230..d846d2828 100755
 --- a/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
 +++ b/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
-@@ -148,21 +148,21 @@ start(){
+@@ -148,21 +148,11 @@ start(){
    en=$(uci get mwan3helper.config.enabled 2>/dev/null)
    if [ $en -eq 1 ];  then
      start_pdnsd
@@ -14,14 +14,6 @@ index 6247ec230..d031d3f29 100755
 -conf-dir=/var/etc/dnsmasq-mwan3.d
 -EOF
 -    /etc/init.d/dnsmasq restart
-+#    mkdir -p /tmp/etc/dnsmasq-mwan3.d
-+#    ipset -N gfwlist hash:net 2>/dev/null
-+#    awk '!/^$/&&!/^#/{printf("ipset=/.%s/'"gfwlist"'\n",$0)}' /etc/mwan3helper/gfw.txt > /tmp/etc/dnsmasq-mwan3.d/mwan3_gfwlist.conf
-+#    awk '!/^$/&&!/^#/{printf("server=/.%s/'"127.0.0.1#53000"'\n",$0)}' /etc/mwan3helper/gfw.txt >> /tmp/etc/dnsmasq-mwan3.d/mwan3_gfwlist.conf
-+#    cat > /tmp/dnsmasq.d/dnsmasq-mwan3.conf <<EOF
-+#conf-dir=/var/etc/dnsmasq-mwan3.d
-+#EOF
-+#    /etc/init.d/dnsmasq restart
    fi
  }
  
@@ -29,8 +21,6 @@ index 6247ec230..d031d3f29 100755
  	  stop_pdnsd
 -	  rm -f /tmp/dnsmasq.d/dnsmasq-mwan3.conf
 -    /etc/init.d/dnsmasq restart
-+#	  rm -f /tmp/dnsmasq.d/dnsmasq-mwan3.conf
-+#    /etc/init.d/dnsmasq restart
  }
  
  
