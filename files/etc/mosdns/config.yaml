@@ -10,8 +10,8 @@ plugin:
     type: server
     args:
       entry:
-        - lazy_cache # 缓存
-        - _single_flight
+        - redis_cache # 缓存
+#        - _single_flight
         - main_sequence # 分流逻辑
       server:
         - protocol: udp
@@ -97,11 +97,11 @@ plugin:
 
   ################ 匹配器插件 #################
 
-  - tag: lazy_cache
+  - tag: redis_cache
     type: cache
     args:
       redis: 'redis://127.0.0.1:6379/0'
-      lazy_cache_ttl: 259200
+#      lazy_cache_ttl: 259200
 
   - tag: query_is_local_domain # 匹配本地域名的插件
     type: query_matcher
