@@ -61,12 +61,12 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-#    - name: Cache
-#      uses: klever1988/cachewrtbuild@test
-#      with:
-#        ccache: 'true'
-#        prefix: ${{ github.workspace }}/openwrt
-#        mixkey: 'x86-64'
+    - name: Cache
+      uses: klever1988/cachewrtbuild@test
+      with:
+        ccache: 'true'
+        prefix: ${{ github.workspace }}/openwrt
+        mixkey: 'x86-64'
 
     - name: Load custom feeds
       run: |
