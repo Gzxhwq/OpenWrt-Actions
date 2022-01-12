@@ -42,7 +42,7 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 #wget https://ispip.clang.cn/othernet_cidr.txt -O package/lean/luci-app-mwan3helper/root/etc/mwan3helper/othernet.txt
 
 # Change dnsproxy behave
-sed -i 's/--cache --cache-min-ttl=3600/--cache --cache-min-ttl=600/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+#sed -i 's/--cache --cache-min-ttl=3600/--cache --cache-min-ttl=600/g' ./package/lean/luci-app-turboacc/root/etc/init.d/turboacc
 
 
 # 1.Set the download repository of the OpenWrt files to your github.com
