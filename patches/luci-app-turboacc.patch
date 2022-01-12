@@ -1,5 +1,5 @@
 diff --git a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
-index b136bb06e..f0028a1f8 100755
+index b136bb06e..645d7375e 100755
 --- a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
 +++ b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
 @@ -196,7 +196,7 @@ start_dnsproxy() {
@@ -11,12 +11,11 @@ index b136bb06e..f0028a1f8 100755
  	echo "DNSProxy: Start DNS Caching"
  }
  
-@@ -269,7 +269,7 @@ start(){
+@@ -269,7 +269,6 @@ start(){
  		/usr/share/dnscache/dnscache-while.sh > "/var/log/dnscache.file" 2>&1 &
  	else
  		stop_dnscache
 -		revert_dns
-+#		revert_dns
  	fi
  
  	if [ "${restart_utils}" = "true" ]; then
