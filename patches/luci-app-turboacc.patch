@@ -1,0 +1,22 @@
+diff --git a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+index b136bb06e..f0028a1f8 100755
+--- a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
++++ b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+@@ -196,7 +196,7 @@ start_dnsproxy() {
+ 
+ 	[ -d "/var/sbin" ] || mkdir -p "/var/sbin"
+ 	cp -a "/usr/bin/dnsproxy" "/var/sbin/dnscache"
+-	/var/sbin/dnscache -l "127.0.0.1" -p "5333" -b "tls://9.9.9.9" -f "tls://8.8.8.8" -u "/var/run/dnscache/dnscache.conf" --all-servers --cache --cache-min-ttl=3600 > "/var/log/dnscache.file" 2>&1 &
++	/var/sbin/dnscache -l "127.0.0.1" -p "5333" -b "tls://9.9.9.9" -f "tls://8.8.8.8" -u "/var/run/dnscache/dnscache.conf" --all-servers --cache --cache-min-ttl=300 > "/var/log/dnscache.file" 2>&1 &
+ 	echo "DNSProxy: Start DNS Caching"
+ }
+ 
+@@ -269,7 +269,7 @@ start(){
+ 		/usr/share/dnscache/dnscache-while.sh > "/var/log/dnscache.file" 2>&1 &
+ 	else
+ 		stop_dnscache
+-		revert_dns
++#		revert_dns
+ 	fi
+ 
+ 	if [ "${restart_utils}" = "true" ]; then
