@@ -27,6 +27,7 @@ plugin:
       exec:
         - if:
             - query_is_ad_domain
+            - qtype65
           exec:
             - _block_with_nxdomain
             - _return
@@ -84,14 +85,10 @@ plugin:
       upstream:
         - addr: 'tls://dot.pub'
           dial_addr: '162.14.21.56:853'
-          idle_timeout: 10
         - addr: 'tls://dot.pub'
           dial_addr: '162.14.21.178:853'
-          idle_timeout: 10
         - addr: 'tls://223.5.5.5'
-          idle_timeout: 10
         - addr: 'tls://223.6.6.6'
-          idle_timeout: 10
 
   # 转发请求至远程服务器的插件
   - tag: forward_remote
@@ -99,17 +96,11 @@ plugin:
     args:
       upstream:
         - addr: 'tls://8.8.4.4'
-          idle_timeout: 10
         - addr: 'tls://1.0.0.1'
-          idle_timeout: 10
         - addr: 'tls://101.101.101.101'
-          idle_timeout: 10
         - addr: 'tls://162.159.36.1'
-          idle_timeout: 10
         - addr: 'tls://9.9.9.9'
-          idle_timeout: 10
         - addr: 'tls://149.112.112.112'
-          idle_timeout: 10
 
   ################ 匹配器插件 #################
 
@@ -136,5 +127,10 @@ plugin:
     args:
       ip:
         - ext:./geoip.dat:cn
+
+  - tag: qtype65
+    type: query_matcher
+    args:
+      qtype: [65]
 
 include: []
