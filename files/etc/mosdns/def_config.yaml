@@ -83,10 +83,8 @@ plugin:
     type: fast_forward
     args:
       upstream:
-        - addr: 'tls://dot.pub'
-          dial_addr: '162.14.21.56:853'
-        - addr: 'tls://dot.pub'
-          dial_addr: '162.14.21.178:853'
+        - addr: 'tls://1.12.12.12'
+        - addr: 'tls://120.53.53.53'
         - addr: 'tls://223.5.5.5'
         - addr: 'tls://223.6.6.6'
 
