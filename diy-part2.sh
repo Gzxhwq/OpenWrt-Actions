@@ -25,7 +25,7 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 #cd ../../
 
 # Update mwan3helper's IP pools
-wget https://github.com/misakaio/chnroutes2/raw/master/chnroutes.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
+wget https://github.com/17mon/china_ip_list/raw/master/china_ip_list.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
 wget https://github.com/gaoyifan/china-operator-ip/raw/ip-lists/chinanet.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/chinatelecom.txt
 wget https://github.com/gaoyifan/china-operator-ip/raw/ip-lists/unicom.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/unicom_cnc.txt
 wget https://github.com/gaoyifan/china-operator-ip/raw/ip-lists/cmcc.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/cmcc.txt
