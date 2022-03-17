@@ -19,7 +19,7 @@ sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwa
 sed -i '$a src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci' feeds.conf.default
 sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
 sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
-sed -i '1i src-git mosdns https://github.com/QiuSimons/openwrt-mos' feeds.conf.default
+sed -i '$a src-git mosdns https://github.com/QiuSimons/openwrt-mos' feeds.conf.default
 
 #Add external packages
 #svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/others/luci-app-openclash
