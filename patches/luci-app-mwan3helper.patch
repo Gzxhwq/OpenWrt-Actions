@@ -1,7 +1,7 @@
-diff --git a/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper b/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
+diff --git a/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper b/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
 index 6247ec230..d846d2828 100755
---- a/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
-+++ b/package/lean/luci-app-mwan3helper/root/etc/init.d/mwan3helper
+--- a/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
++++ b/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
 @@ -148,21 +148,11 @@ start(){
    en=$(uci get mwan3helper.config.enabled 2>/dev/null)
    if [ $en -eq 1 ];  then

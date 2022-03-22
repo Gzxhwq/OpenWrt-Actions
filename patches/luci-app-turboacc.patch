@@ -1,7 +1,7 @@
-diff --git a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+diff --git a/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc b/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
 index b136bb06e..645d7375e 100755
---- a/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
-+++ b/package/lean/luci-app-turboacc/root/etc/init.d/turboacc
+--- a/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
++++ b/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
 @@ -196,7 +196,7 @@ start_dnsproxy() {
  
  	[ -d "/var/sbin" ] || mkdir -p "/var/sbin"
