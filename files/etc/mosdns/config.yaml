@@ -118,7 +118,7 @@ plugin:
     type: query_matcher
     args:
       domain:
-        - ext:./serverlist.txt
+        - ext:/usr/share/v2ray/geosite.dat:category-ads-all
 
   - tag: response_has_local_ip # 匹配本地 IP的插件
     type: response_matcher
