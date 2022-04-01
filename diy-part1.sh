@@ -31,3 +31,4 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 #git submodule add https://github.com/lisaac/luci-app-dockerman.git package/others/luci-app-dockerman
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
 git clone https://github.com/thinktip/luci-theme-neobird.git package/others/luci-theme-neobird
+svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/others/v2ray-geodata
