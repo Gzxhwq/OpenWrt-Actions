@@ -15,6 +15,7 @@ sed -i 's/192.168.1.1/192.168.0.1/g' package/base-files/files/bin/config_generat
 
 # Revert to official distfeeds
 #sed -i '/ustclug/d' package/lean/default-settings/files/zzz-default-settings
+sed -i '/--dport 53 -j REDIRECT --to-ports 53/d' package/lean/default-settings/files/zzz-default-settings
 
 # Modify default theme（FROM uci-theme-bootstrap CHANGE TO luci-theme-argon-18.06）
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon-18.06/g' ./feeds/luci/collections/luci/Makefile
