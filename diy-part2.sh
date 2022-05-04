@@ -17,6 +17,10 @@ sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_genera
 #sed -i '/ustclug/d' package/lean/default-settings/files/zzz-default-settings
 sed -i '/--dport 53 -j REDIRECT --to-ports 53/d' package/lean/default-settings/files/zzz-default-settings
 
+# Enable r8125 ASPM
+sed -i '/^-.*ASPM/s/^-/ /g' package/lean/r8125/patches/010-config.patch
+sed -i '/^+.*ASPM/d' package/lean/r8125/patches/010-config.patch
+
 #Apply the patches
 git apply $GITHUB_WORKSPACE/patches/*.patch
 
