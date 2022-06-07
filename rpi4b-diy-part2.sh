@@ -32,3 +32,5 @@ wget https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/cstne
 
 # Change dnsproxy behave
 #sed -i 's/--cache --cache-min-ttl=3600/--cache --cache-min-ttl=600/g' ./feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
+
+git revert --no-edit 91b3516ba1c116f6f7d78ffe742f8806c1001511
