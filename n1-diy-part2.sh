@@ -57,3 +57,5 @@ sed -i "s|opt/kernel|https://github.com/breakings/OpenWrt/tree/main/opt/kernel|g
 # 5.Set default filesystem in your github.com repository
 sed -i "s|ext4|btrfs|g" package/others/luci-app-amlogic/root/etc/config/amlogic
 
+
+git revert --no-edit 91b3516ba1c116f6f7d78ffe742f8806c1001511
