@@ -32,6 +32,3 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
 git clone https://github.com/thinktip/luci-theme-neobird.git package/others/luci-theme-neobird
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/others/v2ray-geodata
-
-
-git revert 91b3516ba1c116f6f7d78ffe742f8806c1001511
