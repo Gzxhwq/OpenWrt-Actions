@@ -15,8 +15,9 @@ plugins:
   - tag: redis_cache
     type: cache
     args:
+      size: 65536
       redis: "redis://127.0.0.1:6379/0"
-      #lazy_cache_ttl: 259200
+      lazy_cache_ttl: 259200
 
   # 转发至本地服务器的插件
   - tag: forward_local
