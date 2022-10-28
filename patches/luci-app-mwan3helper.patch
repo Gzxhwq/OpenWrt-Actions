@@ -1,8 +1,8 @@
 diff --git a/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper b/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
-index 6247ec230..d846d2828 100755
+index dd71017..ab09e46 100755
 --- a/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
 +++ b/feeds/luci/applications/luci-app-mwan3helper/root/etc/init.d/mwan3helper
-@@ -148,21 +148,11 @@ start(){
+@@ -148,19 +148,9 @@ start(){
    en=$(uci get mwan3helper.config.enabled 2>/dev/null)
    if [ $en -eq 1 ];  then
      start_pdnsd
@@ -22,5 +22,3 @@ index 6247ec230..d846d2828 100755
 -	  rm -f /tmp/dnsmasq.d/dnsmasq-mwan3.conf
 -    /etc/init.d/dnsmasq restart
  }
- 
- 
