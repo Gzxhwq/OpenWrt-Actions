@@ -36,3 +36,5 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 git clone https://github.com/thinktip/luci-theme-neobird.git package/others/luci-theme-neobird
 svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/others/v2ray-geodata
 svn co https://github.com/Gzxhwq/openwrt-passwall/branches/packages-me/sing-box package/others/sing-box
+
+svn co https://github.com/Gzxhwq/openwrt-passwall/branches/xray-patch/xray-core/ package/others/xray-core/
