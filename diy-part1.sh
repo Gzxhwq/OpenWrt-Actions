@@ -22,7 +22,7 @@ sed -i '$a src-git passwall_luci https://github.com/Gzxhwq/openwrt-passwall;luci
 #sed -i '$a src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall;luci' feeds.conf.default
 sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
 #sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
-sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
+#sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 #sed -i '1i src-git mosdns https://github.com/QiuSimons/openwrt-mos' feeds.conf.default
 
 #Add external packages
@@ -35,7 +35,8 @@ sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.co
 #git submodule add https://github.com/lisaac/luci-app-dockerman.git package/others/luci-app-dockerman
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/others/luci-theme-neobird
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
-svn co https://github.com/QiuSimons/openwrt-mos/trunk/v2ray-geodata package/others/v2ray-geodata
+svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06/ package/others/luci-theme-argon
+svn co https://github.com/jerrykuku/luci-app-argon-config/trunk/ package/others/luci-app-argon-config
 
 svn co https://github.com/Gzxhwq/openwrt-passwall/branches/sing-box-git/sing-box package/others/sing-box
 svn co https://github.com/Gzxhwq/openwrt-passwall/branches/xray-core-git/xray-core package/others/xray-core
