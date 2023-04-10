@@ -34,7 +34,7 @@ sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' fee
 #git submodule add https://github.com/garypang13/luci-app-eqos.git package/others/luci-app-eqos
 #git submodule add https://github.com/lisaac/luci-app-dockerman.git package/others/luci-app-dockerman
 #git clone https://github.com/thinktip/luci-theme-neobird.git package/others/luci-theme-neobird
-svn co https://github.com/Gzxhwq/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/others/luci-app-amlogic
 svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06/ package/others/luci-theme-argon
 svn co https://github.com/jerrykuku/luci-app-argon-config/trunk/ package/others/luci-app-argon-config
 
