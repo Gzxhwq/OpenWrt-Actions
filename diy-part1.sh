@@ -41,4 +41,4 @@ svn co https://github.com/jerrykuku/luci-app-argon-config/trunk/ package/others/
 svn co https://github.com/Gzxhwq/openwrt-passwall/branches/sing-box-git/sing-box package/others/sing-box
 svn co https://github.com/Gzxhwq/openwrt-passwall/branches/xray-core-git/xray-core package/others/xray-core
 
-svn co https://github.com/Gzxhwq/openwrt-package/trunk/tailscale package/others/tailscale
+#svn co https://github.com/Gzxhwq/openwrt-package/trunk/tailscale package/others/tailscale
