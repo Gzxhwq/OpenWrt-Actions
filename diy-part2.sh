@@ -40,3 +40,8 @@ wget https://raw.githubusercontent.com/gaoyifan/china-operator-ip/ip-lists/cstne
 
 # Change dnsproxy behave
 #sed -i 's/--cache --cache-min-ttl=3600/--cache --cache-min-ttl=600/g' ./feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
+
++# Update Golang
+git clone -b master --single-branch https://github.com/immortalwrt/packages.git packages_master
+rm -rf ./feeds/packages/lang/golang
+mv ./packages_master/lang/golang ./feeds/packages/lang
