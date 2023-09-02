@@ -18,7 +18,7 @@ sed -i 's/192.168.1.1/10.10.10.100/g' package/base-files/files/bin/config_genera
 sed -i '/--dport 53 -j REDIRECT --to-ports 53/d' package/lean/default-settings/files/zzz-default-settings
 
 # Enable r8125 ASPM
-cp -f $GITHUB_WORKSPACE/010-config.patch package/lean/r8125/patches/010-config.patch
+# cp -f $GITHUB_WORKSPACE/010-config.patch package/lean/r8125/patches/010-config.patch
 
 #Apply the patches
 git apply $GITHUB_WORKSPACE/patches/*.patch
