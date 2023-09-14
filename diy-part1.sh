@@ -39,7 +39,7 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 svn co https://github.com/jerrykuku/luci-theme-argon/branches/18.06/ package/others/luci-theme-argon
 svn co https://github.com/jerrykuku/luci-app-argon-config/trunk/ package/others/luci-app-argon-config
 
-svn co https://github.com/Gzxhwq/openwrt-passwall/branches/sing-box-git/sing-box package/others/sing-box
-svn co https://github.com/Gzxhwq/openwrt-passwall/branches/xray-core-git/xray-core package/others/xray-core
+svn co https://github.com/Gzxhwq/openwrt-passwall-packages/branches/sing-box-git/sing-box package/others/sing-box
+svn co https://github.com/Gzxhwq/openwrt-passwall-packages/branches/xray-core-git/xray-core package/others/xray-core
 
 #svn co https://github.com/Gzxhwq/openwrt-package/trunk/tailscale package/others/tailscale
