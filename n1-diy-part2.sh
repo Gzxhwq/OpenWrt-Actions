@@ -60,3 +60,8 @@ sed -i "s|ext4|btrfs|g" package/others/luci-app-amlogic/root/etc/config/amlogic
 sed -i '/\.\/root\/\.ssh\//i./etc/keepalived/ \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
 sed -i '/\.\/root\/\.ssh\//i./etc/conntrackd/ \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
 sed -i '/\.\/root\/\.ssh\//i./etc/bird.conf \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
+
+# Update Golang
+git clone -b master --single-branch https://github.com/immortalwrt/packages.git packages_master
+rm -rf ./feeds/packages/lang/golang
+mv ./packages_master/lang/golang ./feeds/packages/lang
