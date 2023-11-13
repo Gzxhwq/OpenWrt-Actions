@@ -1,7 +1,7 @@
 diff --git a/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc b/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
 index e5f1454..8daa7e8 100755
---- a/applications/luci-app-turboacc/root/etc/init.d/turboacc
-+++ b/applications/luci-app-turboacc/root/etc/init.d/turboacc
+--- a/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
++++ b/feeds/luci/applications/luci-app-turboacc/root/etc/init.d/turboacc
 @@ -293,11 +293,11 @@ start(){
  			start_dnsproxy
  		fi
