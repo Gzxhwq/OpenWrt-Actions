@@ -47,7 +47,7 @@ git apply $GITHUB_WORKSPACE/patches/*.patch
 
 
 # 1.Set the download repository of the OpenWrt files to your github.com
-sed -i "s|https.*/OpenWrt|https://github.com/Gzxhwq/OpenWrt-Actions|g" package/others/luci-app-amlogic/root/etc/config/amlogic
+sed -i "s|https.*/OpenWrt|https://github.com/Gzxhwq/OpenWrt-Actions|g" package/others/luci-app-amlogic/luci-app-amlogic/root/etc/config/amlogic
 # 2.Set the keywords of Tags in your github.com Releases
 sed -i "s|ARMv8|Phicomm_N1|g" package/others/luci-app-amlogic/luci-app-amlogic/root/etc/config/amlogic
 # 3.Set the suffix of the OPENWRT files in your github.com Releases
