@@ -21,7 +21,7 @@ sed -i '/--dport 53 -j REDIRECT --to-ports 53/d' package/lean/default-settings/f
 # cp -f $GITHUB_WORKSPACE/010-config.patch package/lean/r8125/patches/010-config.patch
 
 #Apply the patches
-git apply $GITHUB_WORKSPACE/patches/*.patch
+# git apply $GITHUB_WORKSPACE/patches/*.patch
 
 #Fix qemu-ga shutdown issue
 #cd ./feeds/packages/

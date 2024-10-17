@@ -18,7 +18,7 @@ sed -i 's/192.168.1.1/10.10.10.200/g' package/base-files/files/bin/config_genera
 sed -i '/--dport 53 -j REDIRECT --to-ports 53/d' package/lean/default-settings/files/zzz-default-settings
 
 #Apply the patches
-git apply $GITHUB_WORKSPACE/patches/*.patch
+# git apply $GITHUB_WORKSPACE/patches/*.patch
 
 # Update mwan3helper's IP pools
 # wget https://raw.githubusercontent.com/Gzxhwq/geoip/release/geoip-only-cn-private.txt -O feeds/luci/applications/luci-app-mwan3helper/root/etc/mwan3helper/all_cn.txt
