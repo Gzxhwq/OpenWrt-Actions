@@ -89,20 +89,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Free Disk Space Before Build
-      #   run: |
-      #     echo "Disk space before cleanup:"
-      #     df -h
-      #     sudo rm -rf /usr/local/.ghcup
-      #     sudo rm -rf /opt/hostedtoolcache/CodeQL
-      #     sudo rm -rf /usr/local/lib/android/sdk/ndk
-      #     sudo rm -rf /usr/share/dotnet
-      #     sudo rm -rf /opt/ghc
-      #     sudo rm -rf /usr/local/share/boost
-      #     sudo apt-get clean
-      #     echo "Disk space after cleanup:"
-      #     df -h
-
       - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -114,7 +100,6 @@ jobs:
           sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
           /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
           sudo timedatectl set-timezone "$TZ"
-          # sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
 
       - name: Clone source code
@@ -122,7 +107,6 @@ jobs:
         run: |
           df -hT $PWD
           git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
-          # ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           cd openwrt
           useVersionInfo=$(git show -s --date=short --format="Author: %an<br/>date: %cd<br/>commit: %s<br/>commit hash: %H")
           echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
@@ -238,17 +222,3 @@ jobs:
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - name: Free Disk Space After Build
-      #   run: |
-      #     echo "Disk space before post-build cleanup:"
-      #     df -h
-      #     sudo rm -rf /usr/local/.ghcup
-      #     sudo rm -rf /opt/hostedtoolcache/CodeQL
-      #     sudo rm -rf /usr/local/lib/android/sdk/ndk
-      #     sudo rm -rf /usr/share/dotnet
-      #     sudo rm -rf /opt/ghc
-      #     sudo rm -rf /usr/local/share/boost
-      #     sudo apt-get clean
-      #     echo "Disk space after post-build cleanup:"
-      #     df -h
