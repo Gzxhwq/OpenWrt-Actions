@@ -206,11 +206,11 @@ jobs:
           name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
           path: ${{ env.FIRMWARE }}
 
-      - name: Upload artifact to Actions
-        uses: kittaakos/upload-artifact-as-is@v0
-        if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-        with:
-          path: ${{ env.PACKAGED_OUTPUTPATH }}/
+      # - name: Upload artifact to Actions
+      #   uses: kittaakos/upload-artifact-as-is@v0
+      #   if: env.PACKAGED_STATUS == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      #   with:
+      #     path: ${{ env.PACKAGED_OUTPUTPATH }}/
 
       - name: Upload OpenWrt Firmware to Release
         id: release
