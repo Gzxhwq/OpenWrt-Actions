@@ -189,7 +189,7 @@ jobs:
         uses: ophub/flippy-openwrt-actions@main
         if: steps.organize.outputs.status == 'success' && !cancelled()
         env:
-          OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
+          OPENWRT_ARMSR: openwrt/bin/targets/*/*/*.tar.gz
           PACKAGE_SOC: s905d
           KERNEL_VERSION_NAME: 6.6.y_6.12.y
           KERNEL_AUTO_LATEST: true
