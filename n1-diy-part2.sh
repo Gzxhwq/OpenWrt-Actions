@@ -60,5 +60,8 @@ sed -i "s|ext4|btrfs|g" package/others/luci-app-amlogic/luci-app-amlogic/root/et
 sed -i '/\.\/root\/\.ssh\//i./etc/keepalived/ \\' package/others/luci-app-amlogic/luci-app-amlogic/root/usr/sbin/openwrt-backup
 sed -i '/\.\/root\/\.ssh\//i./etc/conntrackd/ \\' package/others/luci-app-amlogic/luci-app-amlogic/root/usr/sbin/openwrt-backup
 sed -i '/\.\/root\/\.ssh\//i./etc/bird.conf \\' package/others/luci-app-amlogic/luci-app-amlogic/root/usr/sbin/openwrt-backup
+sed -i '/\.\/root\/\.ssh\//i./etc/sing-box/config.json \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
+sed -i '/\.\/root\/\.ssh\//i./etc/ddns-go/ \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
+sed -i '/\.\/root\/\.ssh\//i./etc/etc/frp/ \\' package/others/luci-app-amlogic/root/usr/sbin/openwrt-backup
 
 sed -i 's/TARGET_CFLAGS += -DHAVE_MAP_SYNC/TARGET_CFLAGS += -DHAVE_MAP_SYNC -D_LARGEFILE64_SOURCE/' feeds/packages/utils/xfsprogs/Makefile
