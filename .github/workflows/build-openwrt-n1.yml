@@ -186,7 +186,7 @@ jobs:
           echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Package Armvirt as OpenWrt
-        uses: ophub/flippy-openwrt-actions@main
+        uses: Gzxhwq/openwrt_packit@master
         if: steps.organize.outputs.status == 'success' && !cancelled()
         env:
           OPENWRT_ARMSR: openwrt/bin/targets/*/*/*.tar.gz
