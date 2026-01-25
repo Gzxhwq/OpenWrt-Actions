@@ -16,12 +16,9 @@
 # Add a feed source
 #sed -i '$a src-git ssrp https://github.com/fw876/helloworld' feeds.conf.default
 sed -i '$a src-git my_packages https://github.com/Gzxhwq/openwrt-packages' feeds.conf.default
-sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages' feeds.conf.default
-#sed -i '$a src-git passwall_luci https://github.com/Gzxhwq/openwrt-passwall;luci-me' feeds.conf.default
-#sed -i '$a src-git passwall_luci https://github.com/Gzxhwq/openwrt-passwall;luci-test' feeds.conf.default
-sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
-sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
-#sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
+# sed -i '$a src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages' feeds.conf.default
+# sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
+# sed -i '$a src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2' feeds.conf.default
 #sed -i '$a src-git jerryk https://github.com/jerrykuku/openwrt-package' feeds.conf.default
 #sed -i '1i src-git mosdns https://github.com/QiuSimons/openwrt-mos' feeds.conf.default
 
